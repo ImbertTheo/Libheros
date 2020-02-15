@@ -82,6 +82,18 @@ CREATE DEFINER=`root`@`localhost` FUNCTION `distanceCoord` (`lng1` FLOAT, `lat1`
 	RETURN dist; 
 END$$
 
+CREATE FUNCTION distanceCoord(lng1 FLOAT, lat1 FLOAT, lng2 FLOAT, lat2 FLOAT) RETURNS FLOAT 
+BEGIN 
+	DECLARE x FLOAT; 
+	DECLARE y FLOAT; 
+	DECLARE dist FLOAT; 
+	SET x = (lng1-lng2)*COS((lat1+lat2)*90/PI()); 
+	SET y = (lat1-lat2); 
+	SET dist = 1.825*60*SQRT(x*x+y*y); 
+	RETURN dist; 
+END$$
+DELIMITER ;
+
 DELIMITER ;
 
 -- --------------------------------------------------------
