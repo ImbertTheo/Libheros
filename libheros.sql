@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 15, 2020 at 12:56 AM
+-- Generation Time: Feb 15, 2020 at 04:38 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -21,6 +21,68 @@ SET time_zone = "+00:00";
 --
 -- Database: `libheros`
 --
+
+DELIMITER $$
+--
+-- Functions
+--
+CREATE DEFINER=`root`@`localhost` FUNCTION `distance` (`lng1` DECIMAL(10,5), `lat1` DECIMAL(10,5), `lng2` DECIMAL(10,5), `lat2` DECIMAL(10,5)) RETURNS DECIMAL(10,5) BEGIN
+	DECLARE x DECIMAL(10,5);
+    DECLARE y DECIMAL(10,5);
+    DECLARE dist DECIMAL(10,5);
+	SET x = (lng1-lng2)*COS((lat1+lat2)/2);
+	SET y = (lat1-lat2);
+	SET dist = 1825*60*SQRT(x*x+y*y);
+	RETURN dist;
+END$$
+
+CREATE DEFINER=`root`@`localhost` FUNCTION `distance2` (`lng1` FLOAT, `lat1` FLOAT, `lng2` FLOAT, `lat2` FLOAT) RETURNS FLOAT BEGIN
+	DECLARE x FLOAT;
+    DECLARE y FLOAT;
+    DECLARE dist FLOAT;
+	SET x = (lng1-lng2)*COS((lat1+lat2)/2);
+	SET y = (lat1-lat2);
+	SET dist = 1825*60*SQRT(x*x+y*y);
+	RETURN dist;
+END$$
+
+CREATE DEFINER=`root`@`localhost` FUNCTION `distance3` (`lng1` FLOAT, `lat1` FLOAT, `lng2` FLOAT, `lat2` FLOAT) RETURNS FLOAT BEGIN DECLARE x FLOAT; 
+	DECLARE y FLOAT; 
+	DECLARE dist FLOAT; 
+	SET x = (lng1-lng2)*COS((lat1+lat2)/2); 
+	SET y = (lat1-lat2); 
+	SET dist = 1.825*60*SQRT(x*x+y*y); 
+	RETURN dist; 
+END$$
+
+CREATE DEFINER=`root`@`localhost` FUNCTION `distance6` (`lng1` FLOAT, `lat1` FLOAT, `lng2` FLOAT, `lat2` FLOAT) RETURNS FLOAT BEGIN DECLARE x FLOAT; 
+	DECLARE y FLOAT; 
+	DECLARE dist FLOAT; 
+	SET x = (lng1-lng2)*COS((lat1+lat2)*90/PI); 
+	SET y = (lat1-lat2); 
+	SET dist = 1.825*60*SQRT(x*x+y*y); 
+	RETURN dist; 
+END$$
+
+CREATE DEFINER=`root`@`localhost` FUNCTION `distance7` (`lng1` FLOAT, `lat1` FLOAT, `lng2` FLOAT, `lat2` FLOAT) RETURNS FLOAT BEGIN DECLARE x FLOAT; 
+	DECLARE y FLOAT; 
+	DECLARE dist FLOAT; 
+	SET x = (lng1-lng2)*COS((lat1+lat2)*90/PI()); 
+	SET y = (lat1-lat2); 
+	SET dist = 1.825*60*SQRT(x*x+y*y); 
+	RETURN dist; 
+END$$
+
+CREATE DEFINER=`root`@`localhost` FUNCTION `distanceCoord` (`lng1` FLOAT, `lat1` FLOAT, `lng2` FLOAT, `lat2` FLOAT) RETURNS FLOAT BEGIN DECLARE x FLOAT; 
+	DECLARE y FLOAT; 
+	DECLARE dist FLOAT; 
+	SET x = (lng1-lng2)*COS((lat1+lat2)*90/PI()); 
+	SET y = (lat1-lat2); 
+	SET dist = 1.825*60*SQRT(x*x+y*y); 
+	RETURN dist; 
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
