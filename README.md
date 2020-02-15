@@ -6,7 +6,7 @@ Pour lancer le site :
 - avec xampp, lancer apache et pmysql
 - ouvrir localhost/phpmyadmin dans un navigateur et importer libheros.sql
 - dans utilities/database.php, adapter la valeur dbname au nom donné à la base de donnée lors de l'importation
-- ouvrir localhost/libheros dans un navigateur
+- ouvrir localhost/chemin/vers/Libheros dans un navigateur
 
 Remarques :
 il est possible qu'il faille mettre à jour mysql pour que le site fonctionne correctement :
