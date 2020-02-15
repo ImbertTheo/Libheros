@@ -17,7 +17,7 @@ require '../utilities/soignant.php';
         $soins = $_GET["soins"];
 
         $liste = Soignant::search($dbh, $lng, $lat, $soins);
-        echo "<h1>Professionnels pouvant vous prendre en charge : </h1>";
+        echo "<h2>Professionnels pouvant vous prendre en charge : </h2>";
         foreach ($liste as $courant) {
             echo $courant->toString();
             echo "<br>";

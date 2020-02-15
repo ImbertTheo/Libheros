@@ -1,6 +1,6 @@
 $(document).ready(function () {
-    var longitude="0";
-    var latitude="0";
+    var longitude = "0";
+    var latitude = "0";
 
     //récupération des coordonnées correspondant à l'adresse renseignée
     var adresse = document.getElementById('adresseJS').value;
@@ -10,9 +10,16 @@ $(document).ready(function () {
     $.getJSON(url, function (data) {
         longitude = (data.results[0].locations[0].latLng.lng).toString();
         latitude = (data.results[0].locations[0].latLng.lat).toString();
-        
+        show(longitude, latitude, soins);
     });
 
+    
+
+
+});
+
+
+function show(longitude, latitude, soins){
     //appel du script 
     if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -21,15 +28,11 @@ $(document).ready(function () {
         // code for IE6, IE5
         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
-    xmlhttp.onreadystatechange = function() {
+    xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("display").innerHTML = this.responseText;
         }
     };
-    xmlhttp.open("GET","../scripts/search.php?lng="+longitude+"&lat="+latitude+"&soins="+soins,true);
+    xmlhttp.open("GET", "scripts/search.php?lng=" + longitude + "&lat=" + latitude + "&soins=" + soins, true);
     xmlhttp.send();
-
-
-});
-
-
+}

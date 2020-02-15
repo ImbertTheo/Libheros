@@ -13,15 +13,14 @@ require 'utilities/soignant.php';
     <script src="bootstrap/js/jquery.min.js"></script>
     <script src="bootstrap/js/popper.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="js/perso.js"></script>
-
+    <script src='js/perso.js'></script>
 
 </head>
 
 <body>
-    <h1>Recherche d'un aide soignant</h1>
+    <h1>Libheros</h1>
 
-    <div id="display">Zone d'affichage</div>
+    <div id="display"><h2>Chercher un professionnel</h2></div>
     <?php
 
     //traitement du formulaire :
@@ -40,6 +39,7 @@ require 'utilities/soignant.php';
             echo "Erreur, les soins demandés n'ont pas étés renseignés";
             return;
         }
+        
     } else {
     ?>
         <!--Formulaire de recherche-->
