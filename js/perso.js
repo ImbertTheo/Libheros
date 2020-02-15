@@ -30,11 +30,6 @@ $(document).ready(function () {
     xmlhttp.send();
 
 
-    
-
-
-    
-
 });
 
 

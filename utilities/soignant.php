@@ -13,10 +13,10 @@ class Soignant
     {
         
         
-        $query = "SELECT * FROM `soignants` JOIN accepted_cares ON soignants.id=accepted_cares.idSoignant WHERE accepted_cares.idSoin = ? AND (1825*60*SQRT(SQUARE((?-soignants.office_longitude)*COS((?-soignants.office_latitude)/2))+SQUARE(?-soignants.office_latitude))<soignants.radius) ORDER BY 1825*60*SQRT(SQUARE((?-soignants.office_longitude)*COS((?-soignants.office_latitude)/2))+SQUARE(?-soignants.office_latitude)) ASC";
+        $query = "SELECT * FROM `soignants` JOIN accepted_cares ON soignants.id=accepted_cares.idSoignant WHERE accepted_cares.idSoin = ? AND distanceCoord(?,?,soignants.office_longitude,soignants.office_latitude)<soignants.radius ORDER BY distanceCoord(?,?,soignants.office_longitude,soignants.office_latitude) ASC";
         $sth = $dbh->prepare($query);
         $sth->setFetchMode(PDO::FETCH_CLASS, 'Soignant');
-        $sth->execute(array($soin,$lng,$lat,$lat,$lng,$lat,$lat));
+        $sth->execute(array($soin, $lng, $lat, $lng, $lat));
         $soignants = $sth->fetchAll();
         $sth->closeCursor();
         return $soignants;

@@ -11,15 +11,16 @@ require '../utilities/soignant.php';
 <body>
     <?php
     $dbh = Database::connect();
-    var_dump($_GET);
     if (isset($_GET["lng"]) && isset($_GET["lat"]) && isset($_GET["soins"])) {
         $lng = $_GET["lng"];
         $lat = $_GET["lat"];
         $soins = $_GET["soins"];
 
         $liste = Soignant::search($dbh, $lng, $lat, $soins);
+        echo "<h1>Professionnels pouvant vous prendre en charge : </h1>";
         foreach ($liste as $courant) {
             echo $courant->toString();
+            echo "<br>";
         }
     } else {
         echo "Erreur : informations manquantes";

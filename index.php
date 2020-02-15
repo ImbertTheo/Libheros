@@ -40,7 +40,6 @@ require 'utilities/soignant.php';
             echo "Erreur, les soins demandés n'ont pas étés renseignés";
             return;
         }
-        echo "Soignants pouvant vous prendre en charge : ";
     } else {
     ?>
         <!--Formulaire de recherche-->
